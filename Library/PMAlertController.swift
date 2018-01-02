@@ -112,7 +112,7 @@ import UIKit
         let textField = UITextField()
         textField.delegate = self
         textField.returnKeyType = .done
-        textField.font = UIFont(name: "Avenir-Heavy", size: 17)
+        textField.font = UIFont(name: "Avenir-Medium", size: 17)
         textField.textAlignment = .center
         configuration (textField)
         _addTextField(textField)
@@ -162,12 +162,6 @@ import UIKit
     
     @objc fileprivate func animateDismissWithGravity(_ style: PMAlertActionStyle){
         if gravityDismissAnimation == true{
-            var radian = Double.pi
-            if style == .default {
-                radian = 2 * Double.pi
-            }else{
-                radian = -2 * Double.pi
-            }
             animator = UIDynamicAnimator(referenceView: self.view)
             
             let gravityBehavior = UIGravityBehavior(items: [alertView])
@@ -176,7 +170,6 @@ import UIKit
             animator?.addBehavior(gravityBehavior)
             
             let itemBehavior = UIDynamicItemBehavior(items: [alertView])
-            itemBehavior.addAngularVelocity(CGFloat(radian), for: alertView)
             animator?.addBehavior(itemBehavior)
         }
     }
